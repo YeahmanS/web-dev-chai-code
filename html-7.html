@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seventh HTML</title>
+    <style>
+        #fname {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #lname {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="forms">
+    <h1>HTML FORMS</h1>
+    <form action="" id="fun">
+        <input type="number" name="client_number" id="client_number">
+        <label for="client_number">Enter your number </label>
+        <input type="submit" name="submit">
+    </form>
+    <br>
+    <textarea rows="4" cols="50" name="desire" form="fun">Leave your desire here</textarea>
+    <p>Open doors to heaven</p>
+    <form>
+        <label for="email_id">Email :</label>
+        <input type="email" name="email_id" id="email_id">
+        <br>
+        <br>
+        <label for="pin">Password :</label>
+        <input type="password" id="pin" name="pin" pattern="[a-zA-Z0-9]{8}">
+        <br>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</div>
+
+
+</body>
+</html>
