@@ -1,0 +1,20 @@
+body{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+section{
+    background-color: aquamarine;
+    display: block;
+    align-content: center;
+
+}
+
+#one{
+    color: chartreuse;
+    background-color: coral;
+}
