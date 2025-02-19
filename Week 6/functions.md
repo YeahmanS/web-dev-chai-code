@@ -88,7 +88,7 @@ const returned = sayHello() ;
 console.log(typeof(returned)); // function
 
 ````
-## Function Declartion
+## Defining Function
 
 For every kind of function, there are multiple ways to define it:
 
@@ -136,3 +136,197 @@ some key points to remember
 
 ### New
 The `new` operator lets developers create an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
+
+In JavaScript, a function can be defined based on a condition. For example, the following function definition defines myFunc only if num equals 0:
+
+````javascript
+let myFunc;
+if (num === 0) {
+  myFunc = function (theObject) {
+    theObject.make = "Toyota";
+  };
+}
+````
+
+
+## Function calling 
+
+Functions must be in scope when they are called, but the function declaration can be hoisted. The scope of a function declaration is the function in which it is declared (or the entire program, if it is declared at the top level).
+
+There are often cases where a function needs to be called dynamically, or the number of arguments to a function vary, or in which the context of the function call needs to be set to a specific object determined at runtime.
+
+It turns out that functions are themselves objects — and in turn, these objects have methods. (See the Function object.) The call() and apply() methods can be used to achieve this goal.
+
+
+### Hoisting 
+
+consider the following example 
+
+````javascript
+console.log(square(5)); //25
+
+function square(n) {
+    return n*n;
+}
+````
+This code runs without any error, despite the square() function being called before it's declared. This is because the JavaScript interpreter hoists the entire function declaration to the top of the current scope, so the code above is equivalent to:
+
+````javascript
+function square(n){
+    return n*n
+}
+
+console.log(square(5))// 25
+````
+
+### Recursion
+A function that calls itself is called a recursive function. In some ways, recursion is analogous to a loop. Both execute the same code multiple times, and both require a condition (to avoid an infinite loop, or rather, infinite recursion in this case).
+
+````javascript
+const factorial = function fac(n){
+    if (n < 2){
+        return 1
+    }else {
+        return n * fac(n-1)
+    }
+}
+
+console.log(factorial(5));
+````
+
+However, some algorithms cannot be simple iterative loops. For example, getting all the nodes of a tree structure (such as the DOM) is easier via recursion:
+
+It is possible to convert any recursive algorithm to a non-recursive one, but the logic is often much more complex, and doing so requires the use of a stack.
+
+### Immediately Invoked Function Expressions (IIFE)
+
+IIFE is a code pattern that directly calls a function defined as an expression. It looks like this:
+
+````javascript
+(function () {
+  // Do something
+})();
+
+const value = (function () {
+  // Do something
+  return someValue;
+})();
+````
+Instead of saving the function in a variable, the function is immediately invoked.
+
+## Function scopes and closures
+
+Functions form a scope for variables—this means variables defined inside a function cannot be accessed from anywhere outside the function. The function scope inherits from all the upper scopes. For example, a function defined in the global scope can access all variables defined in the global scope. A function defined inside another function can also access all variables defined in its parent function, and any other variables to which the parent function has access. On the other hand, the parent function (and any other parent scope) does not have access to the variables and functions defined inside the inner function. 
+
+````javascript
+// The following variables are defined in the global scope
+const num1 = 20;
+const num2 = 3;
+const name = "Chamakh";
+
+// This function is defined in the global scope
+function multiply() {
+  return num1 * num2;
+}
+
+console.log(multiply()); // 60
+
+// A nested function example
+function getScore() {
+  const num1 = 2;
+  const num2 = 3;
+
+  function add() {
+    return `${name} scored ${num1 + num2}`;
+  }
+
+  return add();
+}
+
+console.log(getScore()); // "Chamakh scored 5"
+
+````
+### Closure 
+
+A closure is a function that remembers and can access variables from its **lexical scope**, even after that scope has finished executing. Essentially, closures allow functions to "remember" the environment in which they were created.
+
+In other words, a closure is a function that retains access to the variables from the outer function in which it was defined, even after the outer function has returned and finished executing.
+
+Key Points:
+- Closures enable a function to remember and access variables from its surrounding scope even when the function is called outside that scope.
+- Closures can be useful for things like data encapsulation, callback functions, and creating functions with private state.
+
+Use Cases of Closures:
+
+- **Data Encapsulation:** Closures can help protect variables from being accessed or modified directly from outside the function.
+- **Private Variables:** Closures allow you to create functions that maintain their own state (like the counter example).
+- **Callback Functions:** Functions passed as arguments to other functions that can still access variables from their lexical scope.
+
+````javascript
+function outer() {
+    let count = 0;  // `count` is in the lexical scope of `outer`
+    
+    return function inner() {
+        count++;  // `inner` is a closure, it remembers `count` from `outer`
+        console.log(count);
+    };
+}
+
+const counter = outer();  // `outer` returns `inner`, which is a closure
+
+counter();  // Output: 1
+counter();  // Output: 2
+counter();  // Output: 3
+````
+
+**Lexical scoping** refers to the way variable names are resolved in programming languages based on their location in the source code (or the structure of the code). The basic idea is that variables are bound to their values based on where they are declared, not where they are called.
+
+video for practical example -https://www.youtube.com/watch?v=VaH09NXQZ58 
+
+### Name conflicts
+
+When two arguments or variables in the scopes of a closure have the same name, there is a name conflict. More nested scopes take precedence. So, the innermost scope takes the highest precedence, while the outermost scope takes the lowest. This is the scope chain. The first on the chain is the innermost scope, and the last is the outermost scope. Consider the following:
+
+````javascript
+function outside() {
+  const x = 5;
+  function inside(x) {
+    return x * 2;
+  }
+  return inside;
+}
+
+console.log(outside()(10)); // 20 (instead of 10)
+````
+## Using the arguments object
+
+The arguments of a function are maintained in an array-like object. Within a function, you can address the arguments passed to it as follows:
+````
+arguments[i];
+````
+where `i` is the ordinal number of the argument, starting at `0`. So, the first argument passed to a function would be `arguments[0]`. The total number of arguments is indicated by `arguments.length`.
+
+For example
+````javascript
+function myConcat(separator) {
+  let result = ""; // initialize list
+  // iterate through arguments
+  for (let i = 1; i < arguments.length; i++) {
+    result += arguments[i] + separator;
+  }
+  return result;
+}
+````
+You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
+
+````
+console.log(myConcat(", ", "red", "orange", "blue"));
+// "red, orange, blue, "
+
+console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+// "elephant; giraffe; lion; cheetah; "
+
+console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+// "sage. basil. oregano. pepper. parsley. "
+
+````

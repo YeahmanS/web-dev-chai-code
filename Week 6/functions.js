@@ -75,3 +75,47 @@ console.log(obj.fname); // Saul
 const cube = new Function("X","return X*X*X");
 
 console.log(cube(3))
+
+
+console.log(quadple(5));
+
+function quadple(n){
+    return n*n*n*n
+};
+
+const factorial = function fac(n){
+    if (n < 2){
+        return 1
+    }else {
+        return n * fac(n-1)
+    }
+}
+
+console.log(factorial(5));
+
+(function (){
+    var n=10;
+    while (n >0){
+        console.log(`${n}`)
+        n=n-1
+    }
+})();
+
+function myConcat(separator) {
+    let result = ""; // initialize list
+    // iterate through arguments
+    for (let i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+    }
+    return result;
+  }
+
+  console.log(myConcat(", ", "red", "orange", "blue"));
+  // "red, orange, blue, "
+  
+  console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+  // "elephant; giraffe; lion; cheetah; "
+  
+  console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+  // "sage. basil. oregano. pepper. parsley. "
+  
