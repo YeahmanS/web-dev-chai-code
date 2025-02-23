@@ -69,3 +69,7 @@ const sumWithInitial = array1.myreduce(
 );
 
 console.log(sumWithInitial);
+
+const emptyarray = new Array(0)
+
+console.log(emptyarray.myreduce(reducer,0))
