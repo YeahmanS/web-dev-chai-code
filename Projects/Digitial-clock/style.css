@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #D0D0D2;
+}
+
+div{
+    padding: 30px 50px;
+    background-color: #F3F3F3;
+    border-radius: 15px;
+    font-family:  "Doto", sans-serif;;
+}
+
+#time{
+    font-weight: 900;
+    font-size: 4em;
+}
+
+@media screen and (max-width: 480px) {
+    #time{
+        font-weight: 900;
+        font-size: 2em;
+    }
+}
