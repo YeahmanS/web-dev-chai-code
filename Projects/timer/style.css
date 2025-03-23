@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+#heading{
+    text-align: center;
+    padding-bottom: 20px;
+    font-family: Tahoma, sans-serif;
+}
+
+.timer-functionality{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#timer-text{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#input , #start {
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+#start{
+    font-weight: bold;
+}
