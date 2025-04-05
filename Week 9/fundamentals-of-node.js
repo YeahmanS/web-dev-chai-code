@@ -1,3 +1,3 @@
-const math = require('./math.js')
+import math from "./math.mjs"
 
 console.log(math)

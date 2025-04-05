@@ -6,7 +6,8 @@ function sub(a,b){
     return a-b
 }
 
-module.exports = {
-    addFn : add,
-    subFn : sub
+export default {
+    sub,
+    add
 }
+
