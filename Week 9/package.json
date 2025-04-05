@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "fundamentals-of-node.js",
   "type": "module",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node fundamentals-of-node.js"
@@ -11,5 +10,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "url": "^0.11.4"
+  }
 }

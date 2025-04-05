@@ -1,14 +1,15 @@
-import { count } from "console"
 import fs from "fs"
 import http from "http"
+import url from "url"
 
 const myServer = http.createServer((req,res)=>{
     let count = 1
     const log = `${Date.now()} : user ${count} made a request \n`
-    
+    const user_url = url.parse(req.url)
+    console.log(user_url)
     fs.appendFile("./log.txt",log,(err,data)=>{
         count++
-        switch (req.url){
+        switch (user_url.pathname){
             case '/' : res.end("Welcome to Home Page")
             break
             case '/about' : res.end("Made by Yaman")
