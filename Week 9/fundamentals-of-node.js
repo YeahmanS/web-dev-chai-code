@@ -1,1 +1,3 @@
-console.log("HIIII")
+const math = require('./math.js')
+
+console.log(math)

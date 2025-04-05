@@ -2,6 +2,8 @@
   "name": "week-9",
   "version": "1.0.0",
   "main": "fundamentals-of-node.js",
+  "type": "commonjs",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node fundamentals-of-node.js"
