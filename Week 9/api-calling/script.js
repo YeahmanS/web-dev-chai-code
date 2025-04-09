@@ -14,4 +14,5 @@ async function updateQuote(){
     text_area.innerText = quote.data.content
 }
 
+updateQuote()
 new_quote_button.addEventListener("click",updateQuote)
