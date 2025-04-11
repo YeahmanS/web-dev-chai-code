@@ -8,6 +8,11 @@ const PORT = 8000;
 
 app.use(express.urlencoded())
 
+app.use((req,res,next)=>{
+    console.log("im 1st middleware")
+    next();
+})
+
 //server side rendering
 app.get("/users", (req,res)=>{
     res.send(`
